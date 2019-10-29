@@ -12,12 +12,12 @@ public class Point {
 	
 	public Point(int x, int y) {
 		this.x = x;
-		setY(y);
+		this.y = y;
 	}
 	
 	public Point(int x, int y, boolean selected) {
 		this(x, y);
-		setSelected(selected);
+		this.selected = selected;
 	}
 	
 	public double distance(int x2, int y2) {
