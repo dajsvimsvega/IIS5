@@ -17,11 +17,24 @@ public class Circle {
 	
 	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
-		setSelected(selected);
+		this.selected = selected;
 	}
 	
 	public double area() {
 		return radius * radius * Math.PI;
+	}
+	
+	public boolean equals(Object obj) {
+		if (obj instanceof Circle) {
+			Circle prosledjen = (Circle)obj;
+			if (this.center.equals(prosledjen.getCenter()) && this.radius == prosledjen.getRadius()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	public Point getCenter() {
@@ -41,6 +54,10 @@ public class Circle {
 	}
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+	
+	public String toString() {
+		return "Center=" + center + ", radius=" + radius;
 	}
 	
 }

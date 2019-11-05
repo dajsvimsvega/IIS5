@@ -27,6 +27,19 @@ public class Point {
 		return d;
 	}
 	
+	public boolean equals(Object obj) {
+		if (obj instanceof Point) {
+			Point pomocna = (Point) obj;
+			if (this.x == pomocna.getX() && this.y == pomocna.getY()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	public int getX() {
 		return this.x;
 	}
@@ -49,6 +62,10 @@ public class Point {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+	
+	public String toString() {
+		return "(" + x + ", " + y + ")"; 
 	}
 	
 }

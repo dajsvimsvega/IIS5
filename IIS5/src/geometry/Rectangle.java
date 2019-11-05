@@ -25,6 +25,20 @@ public class Rectangle {
 	public int area() {
 		return height * width;
 	}
+	
+	public boolean equals(Object obj) {
+		if (obj instanceof Rectangle) {
+			Rectangle prosledjen = (Rectangle)obj;
+			if (this.upperLeftPoint.equals(prosledjen.getUpperLeftPoint()) 
+					&& this.height == prosledjen.getHeight() && this.width == prosledjen.getWidth()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
 	public int getHeight() {
 		return height;
@@ -58,6 +72,9 @@ public class Rectangle {
 		this.selected = selected;
 	}
 	
+	public String toString() {
+		return "Upper left point=" + upperLeftPoint + ", width=" + width + ", height=" + height;
+	}
 	
 	
 }

@@ -70,8 +70,39 @@ public class Test {
 		// 8. Postaviti x koordinatu centra kruga c1 na vrednost razlike
 		// povrsine pravougaonika r1 i y koordinate pocetne tacke linije l1
 		
+		r1.setHeight(20);
+		r1.setWidth(30);
 		c1.getCenter().setX(r1.area() - l1.getStartPoint().getY());
 		System.out.println("X of center of c1 = " + c1.getCenter().getX());
+		
+		Point p2 = new Point(20, 30);
+		Line l2 = new Line(p1, new Point(100, 200), true);
+		
+		System.out.println(p2.toString());
+		System.out.println(l2.toString());
+		c1.setRadius(34);
+		System.out.println(c1.toString());
+		System.out.println(r1.toString());
+		
+		Point p4 = new Point(10, 20);
+		Point p5 = new Point(10, 20);
+		
+		System.out.println(p4 == p5); // false
+		
+		System.out.println(p4.equals(p5)); // true
+		System.out.println(p4.equals(r1)); // false
+		System.out.println(p4.equals(p)); // false
+		
+		String s = "Hello";
+		String s1 = "Hello";
+		
+		System.out.println(s == s1); // true
+		
+		String s2 = new String("Hello");
+		String s3 = new String("Hello");
+		
+		System.out.println(s2 == s3);
+		System.out.println(s2.equals(s3));
 		
 	}
 

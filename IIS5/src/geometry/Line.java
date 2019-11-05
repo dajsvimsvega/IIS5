@@ -24,6 +24,19 @@ public class Line {
 		return startPoint.distance(endPoint.getX(), endPoint.getY());
 	}
 	
+	public boolean equals(Object obj) {
+		if (obj instanceof Line) {
+			Line prosledjena = (Line) obj;
+			if (this.startPoint.equals(prosledjena.getStartPoint()) && this.endPoint.equals(prosledjena.getEndPoint())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	public Point getStartPoint() {
 		return startPoint;
 	}
@@ -43,6 +56,8 @@ public class Line {
 		this.selected = selected;
 	}
 	
-	
+	public String toString() {
+		return startPoint + "-->" + endPoint;
+	}
 	
 }
