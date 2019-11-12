@@ -37,6 +37,14 @@ public class Line {
 		}
 	}
 	
+	public boolean contains(int x, int y) {
+		if ((startPoint.distance(x, y) + (endPoint.distance(x, y)) - length()) <= 0.05) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public Point getStartPoint() {
 		return startPoint;
 	}

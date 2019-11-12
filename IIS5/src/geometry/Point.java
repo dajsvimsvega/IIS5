@@ -40,6 +40,10 @@ public class Point {
 		}
 	}
 	
+	public boolean contains(int x, int y) {
+		return this.distance(x, y) <= 3;
+	}
+	
 	public int getX() {
 		return this.x;
 	}
