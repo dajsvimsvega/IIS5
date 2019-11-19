@@ -37,6 +37,17 @@ public class Rectangle {
 		}
 	}
 	
+	public boolean contains(Point p) {
+		if (upperLeftPoint.getX() <= p.getX() &&
+				this.getUpperLeftPoint().getY() <= p.getY() &&
+				p.getX() <= this.getUpperLeftPoint().getX() + width &&
+				p.getY() <= this.getUpperLeftPoint().getY() + height) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public boolean equals(Object obj) {
 		if (obj instanceof Rectangle) {
 			Rectangle prosledjen = (Rectangle)obj;

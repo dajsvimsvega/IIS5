@@ -104,6 +104,9 @@ public class Test {
 		System.out.println(s2 == s3);
 		System.out.println(s2.equals(s3));
 		
+		System.out.println(r1.contains(500, 600));
+		System.out.println(r1.contains(p));
+		
 	}
 
 }
