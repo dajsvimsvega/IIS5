@@ -33,6 +33,19 @@ public class Drawing extends JPanel {
 		Line l1 = new Line(new Point(350, 400), new Point(500, 600), true, Color.BLACK);
 		l1.draw(g);
 		
+		Circle c = new Circle(new Point(550, 300), 50, true, Color.RED, Color.GREEN);
+		c.draw(g);
+		
+		// probati kod kuce sve ovo za Rectangle i Donut
+		
+		Rectangle r = new Rectangle(new Point(450, 450), 70, 40, true, Color.BLACK, Color.YELLOW);
+		r.draw(g);
+		
+		Donut d = new Donut(new Point(180, 500), 50, 30, false, Color.RED, Color.GREEN);
+		d.draw(g);
+		
+	
+		
 	}
 	
 	

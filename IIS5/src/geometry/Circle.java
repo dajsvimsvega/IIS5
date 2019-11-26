@@ -1,6 +1,9 @@
 package geometry;
 
-public class Circle {
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Circle extends SurfaceShape {
 
 	private Point center;
 	private int radius;
@@ -18,6 +21,53 @@ public class Circle {
 	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
 		this.selected = selected;
+	}
+	
+	public Circle(Point center, int radius, boolean selected, Color color) {
+		this(center, radius, selected);
+		setColor(color);
+	}
+	
+	public Circle(Point center, int radius, boolean selected, Color color, Color innerColor) {
+		this(center, radius, selected, color);
+		setInnerColor(innerColor);
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Circle) {
+			return this.radius - ((Circle)o).radius;
+		}
+		return 0;
+	}
+	
+	@Override
+	public void moveBy(int byX, int byY) {
+		this.center.moveBy(byX, byY);
+	}
+
+	@Override
+	public void fill(Graphics g) {
+		g.setColor(getInnerColor());
+		g.fillOval(this.center.getX() - radius + 1, this.center.getY() - radius + 1, radius*2 - 2, radius*2 - 2);
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		g.setColor(getColor());
+		g.drawOval(this.center.getX() - radius, this.center.getY() - radius, this.radius * 2, this.radius * 2);
+		
+		if (isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(this.center.getX() - 3, this.center.getY() - 3, 6, 6);
+			g.drawRect(this.center.getX() - radius - 3, this.center.getY() - 3, 6, 6);
+			g.drawRect(this.center.getX() + radius - 3, this.center.getY() - 3, 6, 6);
+			g.drawRect(this.center.getX() - 3, this.center.getY() - radius - 3, 6, 6);
+			g.drawRect(this.center.getX() - 3, this.center.getY() + radius - 3, 6, 6);
+		}
+		
+		fill(g);
+		
 	}
 	
 	public double area() {
@@ -67,5 +117,7 @@ public class Circle {
 	public String toString() {
 		return "Center=" + center + ", radius=" + radius;
 	}
+
+
 	
 }

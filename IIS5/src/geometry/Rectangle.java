@@ -1,6 +1,9 @@
 package geometry;
 
-public class Rectangle {
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Rectangle extends SurfaceShape {
 
 	private int height;
 	private int width;
@@ -22,7 +25,45 @@ public class Rectangle {
 		this.selected = selected;
 	}
 	
-	public int area() {
+	public Rectangle(Point upperLeftPoint, int height, int width, boolean selected, Color color) {
+		this(upperLeftPoint, height, width, selected);
+		setColor(color);
+	}
+	
+	public Rectangle(Point upperLeftPoint, int height, int width, boolean selected, Color color, Color innerColor) {
+		this(upperLeftPoint, height, width, selected, color);
+		setInnerColor(innerColor);
+	}
+
+	@Override
+	public void moveBy(int byX, int byY) {
+		this.upperLeftPoint.moveBy(byX, byY);
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		g.setColor(getColor());
+		g.drawRect(this.upperLeftPoint.getX(), this.upperLeftPoint.getY(), this.width, this.height);
+		
+		this.fill(g);
+		
+		if (isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(getUpperLeftPoint().getX() - 3, getUpperLeftPoint().getY() - 3, 6, 6);
+			g.drawRect(getUpperLeftPoint().getX() + getWidth() - 3, getUpperLeftPoint().getY() - 3, 6, 6);
+			g.drawRect(getUpperLeftPoint().getX() - 3, getUpperLeftPoint().getY() + getHeight() - 3, 6, 6);
+			g.drawRect(getUpperLeftPoint().getX() + getWidth() - 3, getUpperLeftPoint().getY() + getHeight() - 3, 6, 6);
+		}
+		
+	}
+	
+	@Override
+	public void fill(Graphics g) {
+		g.setColor(getInnerColor());
+		g.fillRect(this.upperLeftPoint.getX()+1, this.getUpperLeftPoint().getY()+1, width-1, height-1);
+	}
+	
+	public double area() {
 		return height * width;
 	}
 	
@@ -97,6 +138,13 @@ public class Rectangle {
 	public String toString() {
 		return "Upper left point=" + upperLeftPoint + ", width=" + width + ", height=" + height;
 	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 	
 }

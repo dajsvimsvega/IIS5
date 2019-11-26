@@ -1,5 +1,7 @@
 package geometry;
 
+import java.util.Arrays;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -72,7 +74,7 @@ public class Test {
 		
 		r1.setHeight(20);
 		r1.setWidth(30);
-		c1.getCenter().setX(r1.area() - l1.getStartPoint().getY());
+		c1.getCenter().setX((int) r1.area() - l1.getStartPoint().getY());
 		System.out.println("X of center of c1 = " + c1.getCenter().getX());
 		
 		Point p2 = new Point(20, 30);
@@ -106,6 +108,29 @@ public class Test {
 		
 		System.out.println(r1.contains(500, 600));
 		System.out.println(r1.contains(p));
+		
+		// dinamicko povezivanje
+		Circle c2 = new Donut(new Point(10, 10), 50, 30);
+		
+		// Niz i sortiranje niza
+		Point p7 = new Point(5, 5);
+		Point p8 = new Point(10, 10);
+		Point p9 = new Point(2, 2);
+		Point p10 = new Point(15, 15);
+		
+		Point[] tacke = {p7, p8, p9, p10};
+		
+		System.out.println("Nesortiran niz tacaka:");
+		for (int i = 0; i < tacke.length; i++) {
+			System.out.println(tacke[i]);
+		}
+		
+		Arrays.sort(tacke);
+		
+		System.out.println("Sortiran niz tacaka");
+		for (int i = 0; i < tacke.length; i++) {
+			System.out.println(tacke[i]);
+		}
 		
 	}
 
