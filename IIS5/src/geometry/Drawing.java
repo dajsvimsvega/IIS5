@@ -7,7 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Drawing extends JPanel {
-
+	public Drawing() {
+		setBackground(Color.WHITE);
+	}
+	
 	public static void main(String[] args) {
 
 		JFrame frame = new JFrame("Drawing");
@@ -30,7 +33,7 @@ public class Drawing extends JPanel {
 		Line l = new Line(new Point(200, 240), new Point(400, 500), false, Color.RED);
 		l.draw(g);
 		
-		Line l1 = new Line(new Point(350, 400), new Point(500, 600), true, Color.BLACK);
+		Line l1 = new Line(new Point(350, 400), new Point(500, 111), true, Color.BLACK);
 		l1.draw(g);
 		
 		Circle c = new Circle(new Point(550, 300), 50, true, Color.RED, Color.GREEN);
@@ -41,7 +44,7 @@ public class Drawing extends JPanel {
 		Rectangle r = new Rectangle(new Point(450, 450), 70, 40, true, Color.BLACK, Color.YELLOW);
 		r.draw(g);
 		
-		Donut d = new Donut(new Point(180, 500), 50, 30, false, Color.RED, Color.GREEN);
+		Donut d = new Donut(new Point(180, 500), 50, 30, true, Color.RED, Color.GREEN);
 		d.draw(g);
 		
 	
