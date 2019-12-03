@@ -7,7 +7,6 @@ public class Circle extends SurfaceShape {
 
 	private Point center;
 	private int radius;
-	private boolean selected;
 	
 	public Circle() {
 
@@ -20,7 +19,7 @@ public class Circle extends SurfaceShape {
 	
 	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
-		this.selected = selected;
+		setSelected(selected);
 	}
 	
 	public Circle(Point center, int radius, boolean selected, Color color) {
@@ -103,16 +102,13 @@ public class Circle extends SurfaceShape {
 	public int getRadius() {
 		return radius;
 	}
-	public void setRadius(int radius) {
-		this.radius = radius;
+	public void setRadius(int radius) throws Exception {
+		if (radius > 0) {
+			this.radius = radius;
+		} else {
+			throw new NumberFormatException("Radius has to be a value greater then 0!");
+		}
 	}
-	public boolean isSelected() {
-		return selected;
-	}
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
 	public String toString() {
 		return "Center=" + center + ", radius=" + radius;
 	}

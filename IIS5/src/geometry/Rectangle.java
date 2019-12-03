@@ -8,7 +8,6 @@ public class Rectangle extends SurfaceShape {
 	private int height;
 	private int width;
 	private Point upperLeftPoint;
-	private boolean selected;
 	
 	public Rectangle() {
 
@@ -22,7 +21,7 @@ public class Rectangle extends SurfaceShape {
 	
 	public Rectangle(Point upperLeftPoint, int height, int width, boolean selected) {
 		this(upperLeftPoint, height, width);
-		this.selected = selected;
+		setSelected(selected);
 	}
 	
 	public Rectangle(Point upperLeftPoint, int height, int width, boolean selected, Color color) {
@@ -52,15 +51,13 @@ public class Rectangle extends SurfaceShape {
 	public void draw(Graphics g) {
 		g.setColor(getColor());
 		g.drawRect(this.upperLeftPoint.getX(), this.upperLeftPoint.getY(), this.width, this.height);
-		
-		this.fill(g);
-		
+		fill(g);
 		if (isSelected()) {
 			g.setColor(Color.BLUE);
-			g.drawRect(getUpperLeftPoint().getX() - 3, getUpperLeftPoint().getY() - 3, 6, 6);
-			g.drawRect(getUpperLeftPoint().getX() + getWidth() - 3, getUpperLeftPoint().getY() - 3, 6, 6);
-			g.drawRect(getUpperLeftPoint().getX() - 3, getUpperLeftPoint().getY() + getHeight() - 3, 6, 6);
-			g.drawRect(getUpperLeftPoint().getX() + getWidth() - 3, getUpperLeftPoint().getY() + getHeight() - 3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX() - 3, this.upperLeftPoint.getY() - 3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX() + this.width - 3, this.upperLeftPoint.getY() - 3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX() - 3, this.upperLeftPoint.getY() + this.height - 3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX() + this.width - 3, this.upperLeftPoint.getY() + this.height - 3, 6, 6);
 		}
 		
 	}
@@ -135,14 +132,6 @@ public class Rectangle extends SurfaceShape {
 		this.upperLeftPoint = upperLeftPoint;
 	}
 
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
 	public String toString() {
 		return "Upper left point=" + upperLeftPoint + ", width=" + width + ", height=" + height;
 	}
