@@ -122,5 +122,21 @@ public class DlgIgrac extends JDialog {
 			}
 		}
 	}
+	
+	public JTextField getTxtIme() {
+		return txtIme;
+	}
+
+	public void setTxtIme(JTextField txtIme) {
+		this.txtIme = txtIme;
+	}
+
+	public JTextField getTxtPrezime() {
+		return txtPrezime;
+	}
+
+	public void setTxtPrezime(JTextField txtPrezime) {
+		this.txtPrezime = txtPrezime;
+	}
 
 }

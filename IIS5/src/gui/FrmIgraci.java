@@ -58,7 +58,7 @@ public class FrmIgraci extends JFrame {
 	 */
 	public FrmIgraci() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 682, 395);
+		setBounds(100, 100, 731, 395);
 		setResizable(false);
 		setTitle("Frame Igraci");
 		contentPane = new JPanel();
@@ -173,11 +173,34 @@ public class FrmIgraci extends JFrame {
 		JButton btnDijalog = new JButton("Dijalog");
 		btnDijalog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// ovde smo stali
+				DlgIgrac dlg = new DlgIgrac();
+				dlg.setVisible(true);
+				if(dlg.isOk) {
+					dlm.addElement(dlg.getTxtIme().getText() + " " + dlg.getTxtPrezime().getText());
+				}
 			}
 		});
 		
 		JButton btnModifikacijaDijalog = new JButton("Modifikacija dijalog");
+		btnModifikacijaDijalog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (listIgraci.isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null,
+							"Niste selektovali nijednog igraca!");
+				} else {
+					DlgIgrac dlgModifikacija = new DlgIgrac();
+					String[] split = dlm.getElementAt(listIgraci.getSelectedIndex()).toString().split(" ");
+					int index = listIgraci.getSelectedIndex();
+					dlgModifikacija.getTxtIme().setText(split[0]);
+					dlgModifikacija.getTxtPrezime().setText(split[1]);
+					dlgModifikacija.setVisible(true);
+					if(dlgModifikacija.isOk) {
+						dlm.removeElementAt(index);
+						dlm.add(index, dlgModifikacija.getTxtIme().getText() + " " + dlgModifikacija.getTxtPrezime().getText());
+					}
+				}
+			}
+		});
 		
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
 		gl_pnlCenter.setHorizontalGroup(
